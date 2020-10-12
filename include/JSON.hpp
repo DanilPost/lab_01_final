@@ -25,7 +25,7 @@ struct Students
 
 class JSON {
  public:
-  JSON(std::string &j);
+  explicit JSON(std::string &j);
   JSON();
   void create_vec(json &j);
   json get_js();
