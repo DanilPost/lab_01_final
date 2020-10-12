@@ -65,8 +65,9 @@ void JSON::create_vec(json &j)
            i != it->at("debt").cend(); i++)
         st.debt.push_back(i.value());
     }
-    else
+    else {
       throw;
+    }
     all_students.push_back(st);
     _size_vector += 1;
     st.debt.clear();
