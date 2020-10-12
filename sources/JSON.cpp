@@ -63,10 +63,7 @@ void JSON::create_vec(json &j)
       for (json::const_iterator i = it->at("debt").cbegin();
            i != it->at("debt").cend(); i++)
         st.debt.push_back(i.value());
-    }
-    else
-      throw;
-
+    } else throw;
     all_students.push_back(st);
     _size_vector += 1;
     st.debt.clear();
@@ -217,12 +214,10 @@ void JSON::out()
     if (all_students[i].group.type() == typeid(int)) {
       str = str + std::to_string(std::any_cast<int>(all_students[i].group));
       std::cout << std::any_cast<int>(all_students[i].group);
-    }
-    else if (all_students[i].group.type() == typeid(std::string)) {
+    } else if (all_students[i].group.type() == typeid(std::string)) {
       str = str + std::any_cast<std::string>(all_students[i].group);
       std::cout << std::any_cast<std::string>(all_students[i].group);
-    }
-    else if (all_students[i].group.type() == typeid(float)) {
+    } else if (all_students[i].group.type() == typeid(float)) {
       str = str + std::to_string(std::any_cast<float>(all_students[i].group));
       std::cout << std::any_cast<float>(all_students[i].group);
     }
@@ -236,8 +231,7 @@ void JSON::out()
     if (all_students[i].avg.type() == typeid(int)) {
       str = str + std::to_string(std::any_cast<int>(all_students[i].avg));
       std::cout << std::any_cast<int>(all_students[i].avg);
-    }
-    else if (all_students[i].avg.type() == typeid(float)) {
+    } else if (all_students[i].avg.type() == typeid(float)) {
       std::ostringstream avg_pr;
 // Set Fixed -Point Notation
       avg_pr << std::fixed;
@@ -249,8 +243,7 @@ void JSON::out()
       std::string avg = avg_pr.str();
       str = str + avg;
       std::cout << avg;
-    }
-    else if (all_students[i].avg.type() == typeid(std::string)) {
+    } else if (all_students[i].avg.type() == typeid(std::string)) {
       str = str + std::any_cast<std::string>(all_students[i].avg);
       std::cout << std::any_cast<std::string>(all_students[i].avg);
     }
@@ -274,8 +267,7 @@ void JSON::out()
         std::cout << std::any_cast<std::string>(all_students[i].debt[0]);
         str = str + std::any_cast<std::string>(all_students[i].debt[0]);
       }
-    }
-    else {
+    } else {
       str = str + "items ";
       str = str + std::to_string(n);
       std::cout << "items " << n; }
