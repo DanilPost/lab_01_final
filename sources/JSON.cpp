@@ -59,10 +59,11 @@ void JSON::create_vec(json &j)
       st.debt.push_back(nullptr);
     else if (it->at("debt").is_string())
       st.debt.push_back(it->at("debt").get<std::string>());
-    else if (it->at("debt").is_array())
-      for(json::const_iterator i = it->at("debt").cbegin();
+    else if (it->at("debt").is_array()) {
+      for (json::const_iterator i = it->at("debt").cbegin();
            i != it->at("debt").cend(); i++)
         st.debt.push_back(i.value());
+    }
     else
       throw;
 
@@ -82,7 +83,7 @@ void JSON::create_vec(json &j)
 
 void JSON::get_length()
 {
-  for ( int i = 0; i<_size_vector; i++ ) {
+  for ( int i = 0; i < _size_vector; i++ ) {
     all_students[i].len_name = all_students[i].name.length();
     if (all_students[i].group.type() == typeid(std::string))
       all_students[i].len_group =
@@ -121,7 +122,7 @@ void JSON::get_length()
 
 void JSON::length_max()
 {
-  for ( int i = 0; i<_size_vector; i++) {
+  for ( int i = 0; i < _size_vector; i++ ) {
     if (all_students[i].len_name >= len_name_max)
       len_name_max = all_students[i].len_name;
     if (all_students[i].len_group >= len_group_max)
@@ -138,28 +139,28 @@ void JSON::len_all()
 {
   str = str + "| name ";
   std::cout << "| name ";
-  for ( int i = 5; i<=len_name_max; i++)
+  for ( int i = 5; i <= len_name_max; i++)
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| group";
   std::cout << "| group";
-  for ( int i = 5; i<=len_group_max; i++)
+  for ( int i = 5; i <= len_group_max; i++)
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| avg";
   std::cout << "| avg";
-  for ( int i = 3; i<=len_avg_max; i++ )
+  for ( int i = 3; i <= len_avg_max; i++ )
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| debt";
   std::cout << "| debt";
-  for ( int i = 4; i<=len_avg_max; i++ )
+  for ( int i = 4; i <= len_avg_max; i++ )
   {
     str = str + " ";
     std::cout << " ";
@@ -170,7 +171,7 @@ void JSON::len_all()
 
 void JSON::out()
 {
-  for ( int i = 0; i<_size_vector; i++ )
+  for ( int i = 0; i < _size_vector; i++ )
     {
     str = str + "|";
       std::cout << "|";
@@ -195,7 +196,7 @@ void JSON::out()
     }
     str = str + "|";
       std::cout << "|";
-    for ( int j = 0;j <= len_debt_max+1;j++ )
+    for ( int j = 0; j <= len_debt_max+1; j++ )
     {
       str = str + "-";
       std::cout<< "-";
