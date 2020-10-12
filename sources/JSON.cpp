@@ -274,13 +274,11 @@ void JSON::out()
         str = str + std::any_cast<std::string>(all_students[i].debt[0]);
       }
     }
-    else
-    {
+    else {
       str = str + "items ";
       str = str + std::to_string(n);
-      std::cout << "items " << n;
-    }
-    for( int j = all_students[i].len_debt; j <= len_debt_max; j++ )
+      std::cout << "items " << n; }
+    for ( int j = all_students[i].len_debt; j <= len_debt_max; j++ )
     {
       str = str + " ";
       std::cout << " ";
