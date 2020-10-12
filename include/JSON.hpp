@@ -1,24 +1,22 @@
+// Copyright 2020 Danil Postvaykin <postvaykin01@mail.ru>
 #pragma once
 
-#include <vector>
 #include <iostream>
 #include <string>
 #include <nlohmann/json.hpp>
 #include <vector>
 #include <iomanip>
-#include <string>
 #include <fstream>
 #include <any>
 
-using namespace std;
 using nlohmann::json;
 
 struct Students
 {
-  string name;
-  any group;
-  any avg;
-  vector<any> debt;
+  std::string name;
+  std::any group;
+  std::any avg;
+  std::vector<std::any> debt;
   int len_name;
   int len_group;
   int len_avg;
@@ -27,12 +25,12 @@ struct Students
 
 class JSON {
  public:
-  JSON(string &j);
+  JSON(std::string &j);
   JSON();
   void create_vec(json &j);
   json get_js();
   ~JSON();
-  void read_file(string &path);
+  void read_file(std::string &path);
   void out();
   void len_all();
   void get_length();
@@ -44,8 +42,8 @@ class JSON {
   int len_debt_max = 0;
  private:
   json _j;
-  vector<Students> all_students;
+  std::vector<Students> all_students;
   int _size_vector = 0;
-  string str = "";
+  std::string str = "";
 };
 

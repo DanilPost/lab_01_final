@@ -5,12 +5,9 @@
 #include <string>
 #include <nlohmann/json.hpp>
 
-using nlohmann::json;
-using namespace std;
-
 TEST(Parser, JSON) {
   EXPECT_TRUE(true);
-  std::cout << "Test started!" << endl;
+  std::cout << "Test started!" << std::endl;
   std::string test_string =
       R"({
   "items": [
@@ -47,7 +44,7 @@ TEST(Parser, JSON) {
   first.out();
 }
 TEST(String, InvalidString){
-  std::cout << "Test2 started!" << endl;
+  std::cout << "Test2 started!" << std::endl;
   std::string test_string =\
 R"({
   "items": [
@@ -91,16 +88,16 @@ R"({
   }
 }
 TEST(Parse, FromFile){
-  std::cout << "Test3 started!" << endl;
+  std::cout << "Test3 started!" << std::endl;
   try {
     JSON st;
-    string path = "table.json";
+    std::string path = "table.json";
     st.read_file(path);
     st.out();
   } catch (const std::runtime_error& e){
-    string expected = e.what();
+    std::string expected = e.what();
     std::cout << expected << std::endl;
-    string ref_string = "File error";
+    std::string ref_string = "File error";
     EXPECT_EQ(expected, ref_string);
   }
 }
