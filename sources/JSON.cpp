@@ -72,7 +72,7 @@ void JSON::create_vec(json &j)
   }
   json it = j.at("_meta");
   int m = 0;
-  if(it.at("count").is_number_integer())
+  if (it.at("count").is_number_integer())
     m = it.at("count").get<std::size_t>();
   int n = all_students.size();
   if (n != m)
@@ -82,7 +82,7 @@ void JSON::create_vec(json &j)
 
 void JSON::get_length()
 {
-  for( int i = 0; i<_size_vector; i++ ) {
+  for ( int i = 0; i<_size_vector; i++ ) {
     all_students[i].len_name = all_students[i].name.length();
     if (all_students[i].group.type() == typeid(std::string))
       all_students[i].len_group =
@@ -108,9 +108,9 @@ void JSON::get_length()
     int n = all_students[i].debt.size();
     if (n == 1)
     {
-      if(all_students[i].debt[0].type() == typeid(nullptr))
+      if (all_students[i].debt[0].type() == typeid(nullptr))
         all_students[i].len_debt = 7;
-      else if(all_students[i].debt[0].type() == typeid(std::string))
+      else if (all_students[i].debt[0].type() == typeid(std::string))
         all_students[i].len_debt = (std::any_cast<std::string>
             (all_students[i].debt[0]).length());
     }
@@ -121,7 +121,7 @@ void JSON::get_length()
 
 void JSON::length_max()
 {
-  for( int i = 0; i<_size_vector; i++) {
+  for ( int i = 0; i<_size_vector; i++) {
     if (all_students[i].len_name >= len_name_max)
       len_name_max = all_students[i].len_name;
     if (all_students[i].len_group >= len_group_max)
@@ -138,28 +138,28 @@ void JSON::len_all()
 {
   str = str + "| name ";
   std::cout << "| name ";
-  for( int i = 5; i<=len_name_max; i++)
+  for ( int i = 5; i<=len_name_max; i++)
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| group";
   std::cout << "| group";
-  for( int i = 5; i<=len_group_max; i++)
+  for ( int i = 5; i<=len_group_max; i++)
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| avg";
   std::cout << "| avg";
-  for( int i = 3; i<=len_avg_max; i++ )
+  for ( int i = 3; i<=len_avg_max; i++ )
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| debt";
   std::cout << "| debt";
-  for( int i = 4; i<=len_avg_max; i++ )
+  for ( int i = 4; i<=len_avg_max; i++ )
   {
     str = str + " ";
     std::cout << " ";
@@ -170,32 +170,32 @@ void JSON::len_all()
 
 void JSON::out()
 {
-  for( int i = 0; i<_size_vector; i++ )
+  for ( int i = 0; i<_size_vector; i++ )
     {
     str = str + "|";
       std::cout << "|";
-    for( int j = 0; j <= len_name_max+1; j++ )
+    for ( int j = 0; j <= len_name_max+1; j++ )
     {
       str = str + "-";
       std::cout<< "-";
     }
       str = str + "|";
       std::cout << "|";
-    for( int j = 0; j <= len_group_max+1; j++ )
+    for ( int j = 0; j <= len_group_max+1; j++ )
     {
       str = str + "-";
       std::cout<< "-";
     }
       str = str + "|";
       std::cout << "|";
-    for( int j = 0; j <= len_avg_max+1; j++ )
+    for ( int j = 0; j <= len_avg_max+1; j++ )
     {
       str = str + "-";
       std::cout<< "-";
     }
     str = str + "|";
       std::cout << "|";
-    for( int j = 0;j <= len_debt_max+1;j++ )
+    for ( int j = 0;j <= len_debt_max+1;j++ )
     {
       str = str + "-";
       std::cout<< "-";
@@ -206,7 +206,7 @@ void JSON::out()
       std::cout << "| ";
     str = str + " " + all_students[i].name;
       std::cout << all_students[i].name;
-    for( int j = all_students[i].len_name; j <= len_name_max; j++ )
+    for ( int j = all_students[i].len_name; j <= len_name_max; j++ )
     {
       str = str + " ";
       std::cout << " ";
@@ -225,7 +225,7 @@ void JSON::out()
       str = str + std::to_string(std::any_cast<float>(all_students[i].group));
       std::cout << std::any_cast<float>(all_students[i].group);
     }
-    for( int j = all_students[i].len_group; j <= len_group_max; j++ )
+    for ( int j = all_students[i].len_group; j <= len_group_max; j++ )
     {
       str = str + " ";
       std::cout << " ";
@@ -249,11 +249,11 @@ void JSON::out()
       str = str + avg;
       std::cout << avg;
     }
-    else if(all_students[i].avg.type() == typeid(std::string)) {
+    else if (all_students[i].avg.type() == typeid(std::string)) {
       str = str + std::any_cast<std::string>(all_students[i].avg);
       std::cout << std::any_cast<std::string>(all_students[i].avg);
     }
-    for( int j = all_students[i].len_avg; j <= len_avg_max; j++ )
+    for ( int j = all_students[i].len_avg; j <= len_avg_max; j++ )
     {
       str = str + " ";
       std::cout << " ";
@@ -263,7 +263,7 @@ void JSON::out()
 
     int n = all_students[i].debt.size();
 
-    if(n == 1) {
+    if ( n == 1 ) {
       if (all_students[i].debt[0].type() == typeid(nullptr)){
         std::cout << "nullptr";
         str = str + "nullptr";
