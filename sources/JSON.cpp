@@ -59,7 +59,8 @@ void JSON::create_vec(json &j)
       st.debt.push_back(nullptr);
     else if (it->at("debt").is_string())
       st.debt.push_back(it->at("debt").get<std::string>());
-    else if (it->at("debt").is_array()) {
+    else if (it->at("debt").is_array())
+    {
       for (json::const_iterator i = it->at("debt").cbegin();
            i != it->at("debt").cend(); i++)
         st.debt.push_back(i.value());
@@ -111,8 +112,7 @@ void JSON::get_length()
       else if (all_students[i].debt[0].type() == typeid(std::string))
         all_students[i].len_debt = (std::any_cast<std::string>
             (all_students[i].debt[0]).length());
-    }
-    else all_students[i].len_debt = 7;
+    } else all_students[i].len_debt = 7;
   }
   this->length_max();
 }
