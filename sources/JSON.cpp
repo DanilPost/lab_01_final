@@ -112,8 +112,7 @@ void JSON::get_length()
       else if (all_students[i].debt[0].type() == typeid(std::string))
         all_students[i].len_debt =
             (std::any_cast<std::string>(all_students[i].debt[0]).length());
-    }
-    else {
+    } else {
       all_students[i].len_debt = 7;
     }
   }
