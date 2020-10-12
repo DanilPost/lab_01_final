@@ -59,13 +59,11 @@ void JSON::create_vec(json &j)
       st.debt.push_back(nullptr);
     else if (it->at("debt").is_string())
       st.debt.push_back(it->at("debt").get<std::string>());
-    else if (it->at("debt").is_array())
-    {
+    else if (it->at("debt").is_array()) {
       for (json::const_iterator i = it->at("debt").cbegin();
            i != it->at("debt").cend(); i++)
         st.debt.push_back(i.value());
-    } else
-    {
+    } else {
       throw;
     }
     all_students.push_back(st);
