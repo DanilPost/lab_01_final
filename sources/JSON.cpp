@@ -44,14 +44,16 @@ void JSON::create_vec(json &j)
       st.group = it->at("group").get<std::string>();
     else if (it->at("group").is_number_float())
       st.group = it->at("group").get<float>();
-    else throw;
+    else
+      throw;
     if (it->at("avg").is_number_float())
       st.avg = it->at("avg").get<float>();
     else if (it->at("avg").is_number_integer())
       st.avg = it->at("avg").get<int>();
     else if (it->at("avg").is_string())
       st.avg = it->at("avg").get<std::string>();
-    else throw;
+    else
+      throw;
 
     if (it->at("debt").is_null())
       st.debt.push_back(nullptr);
@@ -60,10 +62,9 @@ void JSON::create_vec(json &j)
     else if (it->at("debt").is_array())
       for(json::const_iterator i = it->at("debt").cbegin();
            i != it->at("debt").cend(); i++)
-      {
         st.debt.push_back(i.value());
-      }
-    else throw;
+    else
+      throw;
 
     all_students.push_back(st);
     _size_vector += 1;
