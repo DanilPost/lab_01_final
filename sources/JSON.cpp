@@ -81,7 +81,9 @@ void JSON::create_vec(json &j)
 }
 
 void JSON::get_length()
-{
+{ 
+  const int len_nullptr = 7;
+  const int len_avg = 4;
   for ( int i = 0; i < _size_vector; i++ ) {
     all_students[i].len_name = all_students[i].name.length();
     if (all_students[i].group.type() == typeid(std::string))
@@ -103,17 +105,17 @@ void JSON::get_length()
           std::to_string(
               (std::any_cast<int>((all_students[i].avg)))).length();
     else if (all_students[i].avg.type() == typeid(float))
-      all_students[i].len_avg = 4;
+      all_students[i].len_avg = len_avg;
 
     int n = all_students[i].debt.size();
     if (n == 1) {
       if (all_students[i].debt[0].type() == typeid(nullptr))
-        all_students[i].len_debt = 7;
+        all_students[i].len_debt = len_nullptr;
       else if (all_students[i].debt[0].type() == typeid(std::string))
         all_students[i].len_debt =
             (std::any_cast<std::string>(all_students[i].debt[0]).length());
     } else {
-      all_students[i].len_debt = 7;
+      all_students[i].len_debt = len_nullptr;
     }
   }
   this->length_max();
@@ -135,10 +137,14 @@ void JSON::length_max()
 }
 
 void JSON::len_all()
-{
+{ 
+  const int len_name = 5;
+  const int len_group = 5;
+  const int len_avg = 3;
+  const int len_debt = 4;
   str = str + "| name ";
   std::cout << "| name ";
-  for ( int i = 5; i <= len_name_max; i++)
+  for ( int i = len_name; i <= len_name_max; i++)
   {
     str = str + " ";
     std::cout << " ";
@@ -152,14 +158,14 @@ void JSON::len_all()
   }
   str = str + "| avg";
   std::cout << "| avg";
-  for ( int i = 3; i <= len_avg_max; i++ )
+  for ( int i = len_avg; i <= len_avg_max; i++ )
   {
     str = str + " ";
     std::cout << " ";
   }
   str = str + "| debt";
   std::cout << "| debt";
-  for ( int i = 4; i <= len_avg_max; i++ )
+  for ( int i = len_debt; i <= len_avg_max; i++ )
   {
     str = str + " ";
     std::cout << " ";
@@ -258,16 +264,16 @@ void JSON::out()
       std::cout << "| ";
 
     int n = all_students[i].debt.size();
-
+    const int first_debt = 0;
     if ( n == 1 ) {
-      if (all_students[i].debt[0].type() == typeid(nullptr)){
+      if (all_students[i].debt[first_debt].type() == typeid(nullptr)){
         std::cout << "nullptr";
         str = str + "nullptr";
       }
-      if (all_students[i].debt[0].type() == typeid(std::string))
+      if (all_students[i].debt[first_debt].type() == typeid(std::string))
       {
-        std::cout << std::any_cast<std::string>(all_students[i].debt[0]);
-        str = str + std::any_cast<std::string>(all_students[i].debt[0]);
+        std::cout << std::any_cast<std::string>(all_students[i].debt[first_debt]);
+        str = str + std::any_cast<std::string>(all_students[i].debt[first_debt]);
       }
     } else {
       str = str + "items ";
