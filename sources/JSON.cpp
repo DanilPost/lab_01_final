@@ -239,8 +239,7 @@ void JSON::out()
       }
     } else {
       str = str + "items ";
-      str = str + std::to_string(n); 
-    }
+      str = str + std::to_string(n); }
     for ( int j = all_students[i].len_debt; j <= len_debt_max; j++ )
     {
       str = str + " ";
